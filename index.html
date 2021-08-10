@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=s, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/tachyons.min.css">
+    <link rel="stylesheet" href="/css/latex.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Calculator</title>
+</head>
+
+<body class="bg-white black">
+    <article>
+        <h1>Calculator</h1>
+        <h2>Sizing the Digester</h2>
+        <article class="pv3">
+            <p class="pl3">\( V_d = S_d * R_t \)</p>
+            <p class="pl3">\( m^3 = m^3 / day * day \)</p>
+            <p>where, \( V_d \) is Digester Volume, \( S_d \) is Daily Substrate Input Quantity and, \( R_t \) is Chosen
+                Retention Time.</p>
+            <table class="f5 w-100" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="fw6 bb b--black tl pb3 pr3">\[ S_d \]</th>
+                        <th class="fw6 bb b--black tl pb3 pr3">\[ R_t \]</th>
+                        <th class="fw6 bb b--black tl pb3 pr3">\[ V_d \]</th>
+                    </tr>
+                </thead>
+                <tbody class="lh-copy">
+                    <tr class="code">
+                        <td class="pv3 pr3 bb tc b--black"><input id="sd"
+                                oninput="this.value=this.value.replace(/(?![0-9.])./gmi,'')"
+                                class="input-reset ba b--black">
+                        </td>
+                        <td class="pv3 pr3 bb tc b--black"><input id="rt" 1
+                                oninput="this.value=this.value.replace(/(?![0-9.])./gmi,'')"
+                                class="input-reset ba b--black">
+                        </td>
+                        <td class="pv3 pr3 bb tc b--black"><span id="vd"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="pv3 pr3 bb tc b--black"></td>
+                        <td class="pv3 pr3 bb tc b--black"></td>
+                        <td class="pv3 pr3 bb tc b--black">
+                            <button class="f6 button-reset dim ba ph3 pv2 mb2 dib"
+                                onclick="calculateVd()">Calculate</button>
+                            <button class="f6 button-reset dim ba ph3 pv2 mb2 dib" onclick="resetVd()">Reset</button>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+
+        <article class="pv3">
+            <p class="pl3">\( S_d = B + W \)</p>
+            <p class="pl3">\( m^3 / day \)</p>
+            <p>where, \( S_d \) is Substrate Input, \( B \) is Biomass and, \( W \) is Water.</p>
+            <table class="f5 w-100" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="fw6 bb b--black tl pb3 pr3">\[ B \]</th>
+                        <th class="fw6 bb b--black tl pb3 pr3">\[ W \]</th>
+                        <th class="fw6 bb b--black tl pb3 pr3">\[ S_d \]</th>
+                    </tr>
+                </thead>
+                <tbody class="lh-copy">
+                    <tr class="code">
+                        <td class="pv3 pr3 bb tc b--black"><input id="b"
+                                oninput="this.value=this.value.replace(/(?![0-9.])./gmi,'')"
+                                class="input-reset ba b--black">
+                        </td>
+                        <td class="pv3 pr3 bb tc b--black"><input id="w" 1
+                                oninput="this.value=this.value.replace(/(?![0-9.])./gmi,'')"
+                                class="input-reset ba b--black">
+                        </td>
+                        <td class="pv3 pr3 bb tc b--black"><span id="sd1"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="pv3 pr3 bb tc b--black"></td>
+                        <td class="pv3 pr3 bb tc b--black"></td>
+                        <td class="pv3 pr3 bb tc b--black">
+                            <button class="f6 button-reset dim ba ph3 pv2 mb2 dib"
+                                onclick="calculateSd()">Calculate</button>
+                            <button class="f6 button-reset dim ba ph3 pv2 mb2 dib" onclick="resetSd()">Reset</button>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+
+        <article class="pv3">
+            <p class="pl3">\( V_d = \pi r^2 h \)</p>
+            <p class="pl3">\( r:h \rightarrow 1:4 \)</p>
+            <p>by using \( V_d \) to get value of \( r \) and \( h \).</p>
+            <table class="f5 w-100" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="fw6 bb b--black tl pb3 pr3">\[ V_d \]</th>
+                        <th class="fw6 bb b--black tl pb3 pr3">\[ r \]</th>
+                        <th class="fw6 bb b--black tl pb3 pr3">\[ h \]</th>
+                    </tr>
+                </thead>
+                <tbody class="lh-copy">
+                    <tr class="code">
+                        <td class="pv3 pr3 bb tc b--black"><input id="vd1"
+                                oninput="this.value=this.value.replace(/(?![0-9.])./gmi,'')"
+                                class="input-reset ba b--black">
+                        </td>
+                        <td class="pv3 pr3 bb tc b--black"><span id="r"></span></td>
+                        <td class="pv3 pr3 bb tc b--black"><span id="h"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="pv3 pr3 bb tc b--black"></td>
+                        <td class="pv3 pr3 bb tc b--black"></td>
+                        <td class="pv3 pr3 bb tc b--black">
+                            <button class="f6 button-reset dim ba ph3 pv2 mb2 dib"
+                                onclick="calculateRnH()">Calculate</button>
+                            <button class="f6 button-reset dim ba ph3 pv2 mb2 dib" onclick="resetRnH()">Reset</button>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+
+        <h2>Calculating the Daily Gas Production</h2>
+        <code>//to do</code>
+        <h2>Specific Gas Production \(G_p\)</h2>
+        <article class="pv3">
+            <p class="pl3">\( G_p = G \div V_d \)</p>
+            <p class="pl3">\( m^3 / day \div m^3 \)</p>
+            <p>where, \( G_p \) is Specific Gas Production, \( G \) is amount of Biogas generated and, \( V_d \) is Digester Volume.</p>
+            <table class="f5 w-100" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="fw6 bb b--black tl pb3 pr3">\[ G \]</th>
+                        <th class="fw6 bb b--black tl pb3 pr3">\[ V_d \]</th>
+                        <th class="fw6 bb b--black tl pb3 pr3">\[ G_p \]</th>
+                    </tr>
+                </thead>
+                <tbody class="lh-copy">
+                    <tr class="code">
+                        <td class="pv3 pr3 bb tc b--black"><input id="gxx"
+                                oninput="this.value=this.value.replace(/(?![0-9.])./gmi,'')"
+                                class="input-reset ba b--black">
+                        </td>
+                        <td class="pv3 pr3 bb tc b--black"><input id="vd2" 1
+                                oninput="this.value=this.value.replace(/(?![0-9.])./gmi,'')"
+                                class="input-reset ba b--black">
+                        </td>
+                        <td class="pv3 pr3 bb tc b--black"><span id="gp"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="pv3 pr3 bb tc b--black"></td>
+                        <td class="pv3 pr3 bb tc b--black"></td>
+                        <td class="pv3 pr3 bb tc b--black">
+                            <button class="f6 button-reset dim ba ph3 pv2 mb2 dib"
+                                onclick="calculateGp()">Calculate</button>
+                            <button class="f6 button-reset dim ba ph3 pv2 mb2 dib" onclick="resetGp()">Reset</button>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+    </article>
+    <script src="/js/calculator.js"></script>
+</body>
+
+</html>
