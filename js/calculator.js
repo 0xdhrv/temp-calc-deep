@@ -101,3 +101,67 @@ function resetGp() {
     document.getElementById("vd2").value = "";
     document.getElementById("gp").innerHTML = "";
 }
+
+// Calculating Cs
+function calculateCs() {
+    var vd3 = document.getElementById("vd3").value;
+    const CST = 12650;
+    var cs;
+    if(between(vd3, 1, 10)){
+        cs = vd3 * CST;
+    } else if(between(vd3, 11, 25)) {
+        cs = ( vd3 * CST) - (1.3 * CST);
+    } else if(between(vd3, 26, 100)) {
+        cs = ( vd3 * CST) - (1.5 * CST); 
+    } else if(between(vd3, 101, 500)) {
+        cs = ( vd3 * CST) - (1.7 * CST);
+    } else if(between(vd3, 501, 1000)) {
+        cs = ( vd3 * CST) - (2 * CST) 
+    } else {
+        alert("Value of Vd Out of Range [1-1000]\n Please Enter Correct Value");
+    }
+    cs = Math.round(cs * 100000) / 100000;
+    cs = cs.toFixed(5);
+    document.getElementById("cs").innerHTML = cs;
+}
+
+function resetCs () {
+    document.getElementById("vd3").value = "";
+    document.getElementById("cs").innerHTML = "";
+}
+
+function useVdValue() {
+    resetCs();
+    var vd = document.getElementById("vd").innerHTML;
+    console.log(vd);
+    vd = parseFloat(vd);
+    if(!isNaN(vd)) {
+        var vd3 = vd;
+        document.getElementById("vd3").value = vd3;
+        const CST = 12650;
+        var cs;
+        if(between(vd3, 1, 10)){
+            cs = vd3 * CST;
+        } else if(between(vd3, 11, 25)) {
+            cs = ( vd3 * CST) - (1.3 * CST);
+        } else if(between(vd3, 26, 100)) {
+            cs = ( vd3 * CST) - (1.5 * CST); 
+        } else if(between(vd3, 101, 500)) {
+            cs = ( vd3 * CST) - (1.7 * CST);
+        } else if(between(vd3, 501, 1000)) {
+            cs = ( vd3 * CST) - (2 * CST) 
+        } else {
+            alert("Value of Vd Out of Range [1-1000]\n Please Enter Correct Value");
+        }
+        cs = Math.round(cs * 100000) / 100000;
+        cs = cs.toFixed(5);
+        document.getElementById("cs").innerHTML = cs;
+    } else {
+        alert("No Old Vd Value to Use!\n Check Again");
+    }
+}
+
+// Helper Function
+function between(x, dw, up) {
+    return x >= dw && x <= up;
+}

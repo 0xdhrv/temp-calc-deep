@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="/css/latex.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <title>Calculator</title>
+    <title>Food Treato | Calculator</title>
 </head>
 
 <body class="bg-white black">
     <article>
-        <h1>Home Treato</h1>
+        <h1>Food Treato</h1>
         <h2>Sizing the Digester</h2>
         <article class="pv3">
             <p class="pl3">\( V_d = S_d \times R_t \)</p>
@@ -136,9 +136,9 @@
             <table class="f5 w-100" cellspacing="0">
                 <thead>
                     <tr>
-                        <th class="fw6 bb b--black tl pb3 pr3">\[ G \]</th>
                         <th class="fw6 bb b--black tl pb3 pr3">\[ VS \]</th>
                         <th class="fw6 bb b--black tl pb3 pr3">\[ G_y \]</th>
+                        <th class="fw6 bb b--black tl pb3 pr3">\[ G \]</th>
                     </tr>
                 </thead>
                 <tbody class="lh-copy">
@@ -200,6 +200,41 @@
                             <button class="f6 button-reset dim ba ph3 pv2 mb2 dib"
                                 onclick="calculateGp()">Calculate</button>
                             <button class="f6 button-reset dim ba ph3 pv2 mb2 dib" onclick="resetGp()">Reset</button>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+
+        <h2>Cost per volume of Digester</h2>
+        <article class="pv3">
+            <p>For \( V_d = 1m^3 \) the cost is \(₹12,650\)</p>
+            <p>where,  \( V_d \) is Digester Volume.</p>
+            <table class="f5 w-100" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="fw6 bb b--black tl pb3 pr3">\[ V_d \]</th>
+                        <th class="fw6 bb b--black tl pb3 pr3">\[ Cost \]</th>
+                    </tr>
+                </thead>
+                <tbody class="lh-copy">
+                    <tr class="code">
+                        <td class="pv3 pr3 bb tc b--black"><input id="vd3"
+                                oninput="this.value=this.value.replace(/(?![0-9.])./gmi,'')"
+                                class="input-reset ba b--black">
+                        </td>
+                        <td class="pv3 pr3 bb tc b--black"><span id="cs"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="pv3 pr3 bb tc b--black">
+                            <button class="f6 button-reset dim ba ph3 pv2 mb2 dib"
+                                onclick="useVdValue()">Use \( V_d \) Value</button>
+                        </td>
+                        <td class="pv3 pr3 bb tc b--black">
+                            <button class="f6 button-reset dim ba ph3 pv2 mb2 dib"
+                                onclick="calculateCs()">Calculate</button>
+                            <button class="f6 button-reset dim ba ph3 pv2 mb2 dib" onclick="resetCs()">Reset</button>
                             </span>
                         </td>
                     </tr>
