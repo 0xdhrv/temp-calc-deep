@@ -17,8 +17,8 @@
         <h1>Calculator</h1>
         <h2>Sizing the Digester</h2>
         <article class="pv3">
-            <p class="pl3">\( V_d = S_d * R_t \)</p>
-            <p class="pl3">\( m^3 = m^3 / day * day \)</p>
+            <p class="pl3">\( V_d = S_d \times R_t \)</p>
+            <p class="pl3">\( m^3 = m^3 / day \times day \)</p>
             <p>where, \( V_d \) is Digester Volume, \( S_d \) is Daily Substrate Input Quantity and, \( R_t \) is Chosen
                 Retention Time.</p>
             <table class="f5 w-100" cellspacing="0">
@@ -129,12 +129,50 @@
         </article>
 
         <h2>Calculating the Daily Gas Production</h2>
-        <code>//to do</code>
+        <article class="pv3">
+            <p class="pl3">\( G = VS \times G_y \)</p>
+            <p class="pl3">\( m^3 / day = kg \times m^3 / (d \times kg) \)</p>
+            <p>where, \( G \) is amount of Biogas Generated, \( VS \) is Volatile Solids Content and, \( G_y \) is Specific Gas Yield.</p>
+            <table class="f5 w-100" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th class="fw6 bb b--black tl pb3 pr3">\[ G \]</th>
+                        <th class="fw6 bb b--black tl pb3 pr3">\[ VS \]</th>
+                        <th class="fw6 bb b--black tl pb3 pr3">\[ G_y \]</th>
+                    </tr>
+                </thead>
+                <tbody class="lh-copy">
+                    <tr class="code">
+                        <td class="pv3 pr3 bb tc b--black"><input id="g"
+                                oninput="this.value=this.value.replace(/(?![0-9.])./gmi,'')"
+                                class="input-reset ba b--black">
+                        </td>
+                        <td class="pv3 pr3 bb tc b--black"><input id="vs" 1
+                                oninput="this.value=this.value.replace(/(?![0-9.])./gmi,'')"
+                                class="input-reset ba b--black">
+                        </td>
+                        <td class="pv3 pr3 bb tc b--black"><span id="gy"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="pv3 pr3 bb tc b--black"></td>
+                        <td class="pv3 pr3 bb tc b--black"></td>
+                        <td class="pv3 pr3 bb tc b--black">
+                            <button class="f6 button-reset dim ba ph3 pv2 mb2 dib"
+                                onclick="calculateGy()">Calculate</button>
+                            <button class="f6 button-reset dim ba ph3 pv2 mb2 dib" onclick="resetGy()">Reset</button>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+
         <h2>Specific Gas Production \(G_p\)</h2>
         <article class="pv3">
             <p class="pl3">\( G_p = G \div V_d \)</p>
             <p class="pl3">\( m^3 / day \div m^3 \)</p>
-            <p>where, \( G_p \) is Specific Gas Production, \( G \) is amount of Biogas generated and, \( V_d \) is Digester Volume.</p>
+            <p>where, \( G_p \) is Specific Gas Production, \( G \) is amount of Biogas generated and, \( V_d \) is
+                Digester Volume.</p>
             <table class="f5 w-100" cellspacing="0">
                 <thead>
                     <tr>

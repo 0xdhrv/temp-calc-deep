@@ -63,7 +63,24 @@ function resetRnH() {
 
 // Calulating G
 
-// to do
+function calculateGy(){
+    var g = document.getElementById("g").value;
+    var vs = document.getElementById("vs").value;
+    if(g == "" || vs == ""){
+        alert("Please Enter all the Fields for G");
+    } else {
+        var gy = parseFloat(g) * parseFloat(vs);
+        gy = Math.round(gy * 100000) / 100000;
+        gy = gy.toFixed(5);
+        document.getElementById("gy").innerHTML = gy;
+    }  
+}
+
+function resetVd() {
+    document.getElementById("g").value = "";
+    document.getElementById("vs").value = "";
+    document.getElementById("gy").innerHTML = "";
+}
 
 // Calculating Gp
 function calculateGp(){
